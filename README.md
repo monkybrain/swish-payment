@@ -13,7 +13,7 @@ Uses promises for async operations
 ## Methods
 
 ### init (options)
-Must be called before adding and getting payments.
+Must be called before adding and getting payments. Convert .p12 cert to .pem before use.
 
 - Takes: option object (see below)
 - Resolves: config object
@@ -21,28 +21,21 @@ Must be called before adding and getting payments.
 
 _option object_
 - cert
-  - key (required)
-    - Path to .pem file containing private key
-    - type: STRING
-  - cert (required)
+  - key (string)
+    - Path to .pem file containing public key
+  - cert (string)
     - Path to .pem file containing certificate
-    - type: STRING
-  - ca (required)
+  - ca (string)
     - Path to .pem file containing root certificate
-    - type: STRING
-  - passphrase (required)
-    - Private key passphrase
+  - passphrase (string)
+    - Passphrase
 - data
-  - payeeAlias (required)
+  - payeeAlias (string)
       - Merchant telephone number
-      - type: STRING
-  - currency (optional)
-    - Currency code
-    - type: STRING
-    - default: "SEK"
-  - callbackUrl (required)
+  - currency (string)
+    - Currency code (default "SEK")
+  - callbackUrl (string)
     - Webhook URL for payment status updates (must be HTTPS)
-    - type: STRING
 
 _Example_
 ```
@@ -70,18 +63,14 @@ Send payment request to Swish.
 
 _data object_
 
-- payeePaymentReference (required)
+- payeePaymentReference (string)
   - Merchant reference
-  - type: STRING
-- payerAlias (required)
+- payerAlias (string)
   - Customer telephone number
-  - type: STRING
-- amount (required)
+- amount (string)
   - Payment amount in SEK
-  - type: STRING
-- message (required)
+- message (string)
   - Message presented to customer
-  - type: STRING
 
   _Example_
   ```
