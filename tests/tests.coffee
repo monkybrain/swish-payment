@@ -43,6 +43,7 @@ test "Successful flow (init -> add -> get)", (t) ->
     t.equal id.length, 32, "Response: 200 / valid ID (#{id})"
     swish.get id
   .then (result) ->
+    console.log result
     t.equal id, result.id, "Response: 200 / found (#{id})"
     t.end()
   .catch (err) ->
