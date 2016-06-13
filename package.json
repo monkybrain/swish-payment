@@ -1,0 +1,32 @@
+{
+  "name": "swish-payment",
+  "version": "0.0.1",
+  "description": "Node.js library for the Swish Handel API (Swedish mobile payment solution)",
+  "main": "dist/swish.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/monkybrain/swish-payment.git"
+  },
+  "keywords": [
+    "swish",
+    "payment"
+  ],
+  "author": "Philip Prophet (philip.prophet@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/monkybrain/swish-payment/issues"
+  },
+  "homepage": "https://github.com/monkybrain/swish-payment#readme",
+  "dependencies": {
+    "promise": "^7.1.1",
+    "ramda": "^0.21.0",
+    "request": "^2.72.0"
+  },
+  "devDependencies": {
+    "async": "^2.0.0-rc.6",
+    "tape": "^4.5.1"
+  }
+}
