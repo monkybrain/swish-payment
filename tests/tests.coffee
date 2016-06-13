@@ -15,17 +15,17 @@ test "Successful flow (init -> add -> get)", (t) ->
   # 1 - INIT
   swish.init configData
   .then (result) ->
-    # Find private key
+    # 1 - Find private key
     t.notEqual -1, result.cert.key.search("BEGIN PRIVATE KEY"), "Found private key"
-    # Find certificate
+    # 2 - Find certificate
     t.notEqual -1, result.cert.cert.search("BEGIN CERTIFICATE"), "Found certificate"
-    # Find root certificate
+    # 3 - Find root certificate
     t.notEqual -1, result.cert.ca.search("BEGIN CERTIFICATE"), "Found root certificate"
-    # Find passphrase
+    # 4 - Find passphrase
     t.equal configData.passphrase, result.cert.passphrase, "Found passphrase"
-    # Find payeeAlias
+    # 5 - Find payeeAlias
     t.equal configData.payeeAlias, result.data.payeeAlias, "Found payee alias"
-    # Find payeeAlias
+    # 6 - Find payeeAlias
     t.equal configData.callbackUrl, result.data.callbackUrl, "Found callback url"
 
   # 2 - ADD
@@ -40,6 +40,7 @@ test "Successful flow (init -> add -> get)", (t) ->
     swish.add paymentData
 
   .then (@id) ->
+    # 7 - Get id
     t.equal id.length, 32, "Response: 200 / valid ID (#{id})"
     swish.get id
   .then (result) ->
@@ -49,10 +50,5 @@ test "Successful flow (init -> add -> get)", (t) ->
   .catch (err) ->
     t.fail JSON.stringify error
     t.end()
-
-
-# tests.push test "Add", (t) ->
-#
-
 
 # async.parallel tests
