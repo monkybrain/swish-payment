@@ -2,6 +2,14 @@
 
 Uses promises for async operations
 
+## Install
+
+`npm install swish-payment`
+
+## Use
+
+`swish = require('swish-payment')`
+
 ## Methods
 
 ### init (options)
