@@ -68,13 +68,3 @@ exports.add = (data) ->
 
       # Else -> reject with error
       else reject if response?.body? then response.body else err: "unknown"
-
-exports.init
-  key: 'res/certs/swish.key'
-  cert: 'res/certs/swish.crt'
-  ca: 'res/certs/swish.ca'
-  passphrase: 'swish'
-  payeeAlias: '1231181189'
-  callbackUrl: 'https://www.test.se'
-.then -> exports.get 'DE6F11C3A0AF4AFC9399C0F0ECC50C5E'
-.then (data) -> console.log data

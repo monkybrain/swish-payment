@@ -1,6 +1,6 @@
 {
   "name": "swish-payment",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Node.js library for the Swish Handel API (Swedish mobile payment solution)",
   "main": "dist/swish.js",
   "scripts": {
