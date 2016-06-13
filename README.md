@@ -98,6 +98,22 @@ _Example_
 ```
 swish.get('DE6F11C3A0AF4AFC9399C0F0ECC50C5E')
 .then(function(data) {
-  console.log(id);      # e.g. "DE6F11C3A0AF4AFC9399C0F0ECC50C5E"
+  console.log(data);
 });
+
+# Example response
+{ errorCode: null,
+  errorMessage: null,
+  id: 'DE6F11C3A0AF4AFC9399C0F0ECC50C5E',
+  payeePaymentReference: 'snus123',
+  paymentReference: '5504E033FA7E4C85B7B2C9C7947D9C5D',
+  callbackUrl: 'https://www.test.se/callback',
+  payerAlias: '0706123456',
+  payeeAlias: '1231181189',
+  amount: 100,
+  currency: 'SEK',
+  message: 'Prima snus',
+  status: 'PAID',
+  dateCreated: '2016-06-03T13:20:26.093Z',
+  datePaid: '2016-06-03T13:20:26.094Z' }
 ```
