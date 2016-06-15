@@ -29,7 +29,6 @@ Must be called before adding and getting payments.
 
 Convert provided .p12 to .pem before use (with OPENSSL or equivalent).
 
-_Option object_
 ```
 # OPTION OBJECT
 {
@@ -97,7 +96,7 @@ _Example_
 
 Get payment data by ID.
 
-Takes Swish payment ID and resolves payment data if successful.
+Takes Swish payment ID as argument and resolves with payment data if successful.
 
 _Example_
 ```
