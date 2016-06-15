@@ -12,30 +12,40 @@ Uses promises for async operations
 
 ## Methods
 
-### init (options)
-Must be called before adding and getting payments. Convert .p12 cert to .pem before use.
+Library contains only three methods:
+- init
+- add
+- get
 
-- Takes: option object (see below)
-- Resolves: config object
-- Rejects: error
+See reference below.
 
-_option object_
-- cert
-  - key (string)
-    - Path to .pem file containing public key
-  - cert (string)
-    - Path to .pem file containing certificate
-  - ca (string)
-    - Path to .pem file containing root certificate
-  - passphrase (string)
-    - Passphrase
-- data
-  - payeeAlias (string)
-      - Merchant telephone number
-  - currency (string)
-    - Currency code (default "SEK")
-  - callbackUrl (string)
-    - Webhook URL for payment status updates (must be HTTPS)
+### init(options)
+
+Initialize Swish module.
+
+Takes _options object_ (see below) as argument. Resolves with _options object_ if successful.
+
+Must be called before adding and getting payments.
+
+Convert provided .p12 to .pem before use (with OPENSSL or equivalent).
+
+_Option object_
+```
+# OPTION OBJECT
+{
+  cert: {
+    key: <STRING>         # Path to .pem file containing private key
+    cert: <STRING>        # Path to .pem file containing SSL certificate
+    ca: <STRING>          # Path to .pem file containing root certificate
+    passphrase: <STRING>  # Passphrase for private key
+  },
+  data: {
+    payeeAlias <STRING>   # Merchant Swish number
+    currency: <STRING>    # Currency code (default: "SEK")
+    callbackUrl: <STRING> # Callback URL for payment request status notification
+  }
+}
+```
 
 _Example_
 ```
@@ -54,26 +64,24 @@ swish.init({
 });
 ```
 
-### add (data)
+### add(data)
+
 Send payment request to Swish.
 
-- Takes: data object (see below)
-- Resolves: payment ID
-- Rejects: error
+Takes _data object_ (see below) as argument. Resolves with Swish payment ID if successful.
 
-_data object_
+```
+# DATA OBJECT
+{
+  payeePaymentReference: <STRING>   # Merchant payment reference (e.g. order id)
+  payerAlias: <STRING>              # Telephone number of customer
+  amount: <STRING>                  # Amount in SEK (e.g. "100" or "49.50")
+  message: <STRING>                 # Merchant supplied message to customer
+}
+```
 
-- payeePaymentReference (string)
-  - Merchant reference
-- payerAlias (string)
-  - Customer telephone number
-- amount (string)
-  - Payment amount in SEK
-- message (string)
-  - Message presented to customer
-
-  _Example_
-  ```
+_Example_
+```
   swish.add({
     payeePaymentReference: "snus123",
     payerAlias: '0706123456',
@@ -83,13 +91,13 @@ _data object_
   .then(function(id) {
     console.log(id);      # e.g. "DE6F11C3A0AF4AFC9399C0F0ECC50C5E"
   });
-  ```
+```
 
-### get (id)
+### get(id)
 
-- Takes: payment ID
-- Resolves: payment data
-- Rejects: error
+Get payment data by ID.
+
+Takes Swish payment ID and resolves payment data if successful.
 
 _Example_
 ```
