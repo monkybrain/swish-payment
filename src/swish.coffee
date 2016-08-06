@@ -53,7 +53,7 @@ exports.add = (data) ->
     # Request options (merged with certificates)
     options = R.merge config.cert,
       method: 'post'
-      url: urls.payments
+      url: urls.payment
       body: R.merge config.data, data
       json: true
 
