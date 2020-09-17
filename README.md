@@ -1,5 +1,7 @@
 # Library for Swish Handel API
 
+_WARNING! This library is old and probably doesn't work any longer, if it ever did? :)_
+
 Uses promises for async operations
 
 ## Install
